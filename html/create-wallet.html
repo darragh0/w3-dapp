@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../images/ico/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/create-wallet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Tikky &ndash; Create Wallet</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a href="../index.html" class="navbar-logo">
+          <img src="../images/ico/favicon.ico" alt="Tikky Logo" />
+          <span>Tikky</span>
+        </a>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a href="./create-wallet.html" class="nav-link">Create Wallet</a>
+        </li>
+        <li class="nav-item">
+          <a href="./balance.html" class="nav-link">Check Balance</a>
+        </li>
+        <li class="nav-item">
+          <a href="./buy.html" class="nav-link">Buy Ticket</a>
+        </li>
+        <li class="nav-item">
+          <a href="./refund.html" class="nav-link">Refund</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <header id="header">
+        <i class="fas fa-wallet" id="header__icon"></i>
+        <h1 id="header__title">Create a Wallet</h1>
+      </header>
+
+      <div>
+        <p id="wallet-desc">
+          Your wallet is a secure place to store your cryptocurrencies. Keep
+          your private key and password safe and
+          <u><strong>never</strong></u> share them with
+          <u><strong>anyone</strong></u
+          >.
+        </p>
+      </div>
+
+      <div id="wallet">
+        <div id="wallet__form" class="card">
+          <div class="card-header">
+            <i class="fas fa-key"></i>
+            <h2>Create Wallet</h2>
+          </div>
+          <div class="card-content">
+            <div class="input-title">Wallet Password</div>
+            <div class="input-group">
+              <div class="wallet-input-display">
+                <input
+                  type="password"
+                  id="wallet__password"
+                  placeholder="Enter password or leave empty for auto-generated password" />
+                <button
+                  id="toggle-password-btn"
+                  class="icon-btn"
+                  title="Show Password">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button id="wallet__gen-btn" class="action-btn">
+                <i class="fas fa-key"></i> Generate Wallet
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wallet Details section will be inserted here dynamically -->
+        <div id="wallet-details-container"></div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="../js/create-wallet.js"></script>
+  </body>
+</html>

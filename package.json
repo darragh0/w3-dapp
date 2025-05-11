@@ -1,0 +1,29 @@
+{
+  "name": "w3-dapp",
+  "version": "1.0.0",
+  "description": "Web3 Distributed Application (DApp) that implements simple ticketing system.",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darragh0/w3-dapp.git"
+  },
+  "keywords": [
+    "web3",
+    "dapp",
+    "tickets"
+  ],
+  "author": "darragh0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darragh0/w3-dapp/issues"
+  },
+  "homepage": "https://github.com/darragh0/w3-dapp#readme",
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "live-server": "^1.2.2",
+    "web3": "^4.16.0"
+  }
+}

@@ -1,0 +1,349 @@
+/* Basic card layout */
+.card {
+  background-color: rgba(40, 42, 54, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(106, 89, 146, 0.2);
+}
+
+.card-header {
+  background-color: rgba(106, 89, 146, 0.2);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(106, 89, 146, 0.3);
+}
+
+.card-header i {
+  color: var(--bpink);
+  font-size: 1.25rem;
+}
+
+.card-header h2 {
+  color: var(--bright);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+#header {
+  margin-bottom: 0;
+}
+
+#wallet-desc {
+  color: var(--bright);
+  line-height: 1.5;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Wallet layout */
+#wallet {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form elements */
+.input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Input styling */
+.wallet-input-display {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--dpurple);
+  border-radius: 4px;
+  color: var(--bright);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.wallet-input-display input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  height: 2.2rem;
+  color: var(--bright);
+  font-size: 0.95rem;
+  font-family: "Roboto Mono", monospace;
+  width: 100%;
+  padding-left: 0.2rem;
+}
+
+.wallet-input-display input:focus {
+  outline: none;
+  background: transparent;
+}
+
+.wallet-input-display input::placeholder {
+  color: var(--lgrey);
+  opacity: 0.7;
+}
+
+/* Section titles */
+.address-title,
+.input-title {
+  font-size: 1rem;
+  color: var(--bgreen);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.address-title small {
+  font-size: 0.8rem;
+  color: var(--bred);
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+/* Button styling */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#wallet__gen-btn {
+  background-color: var(--dpink);
+  color: var(--bg);
+}
+
+#wallet__gen-btn:hover {
+  background-color: var(--bpink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+#wallet__gen-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#download-btn {
+  background-color: var(--bgreen);
+  color: var(--bg);
+}
+
+#download-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+#download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Display elements */
+.address-display {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--dpurple);
+  border-radius: 4px;
+  color: var(--bright);
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#wallet__addr__text,
+#wallet__private__text,
+#wallet__password__text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95rem;
+  padding-left: 0.2rem;
+}
+
+/* Secret information sections */
+.private-key-section {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.private-key-display {
+  border-color: var(--bred);
+  background-color: rgba(255, 120, 120, 0.05);
+}
+
+/* Password display - same styling as private key display */
+#wallet__password__display {
+  border-color: var(--bred);
+  background-color: rgba(255, 120, 120, 0.05);
+}
+
+.private-key-display.hidden-key #wallet__private__text {
+  filter: blur(6px);
+  user-select: none;
+}
+
+#wallet__password__display.hidden-key #wallet__password__text {
+  filter: blur(6px);
+  user-select: none;
+}
+
+/* Icon buttons */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--lgrey);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+}
+
+.icon-btn:hover {
+  color: var(--bpink);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.copied {
+  animation: pulse 0.5s ease-in-out;
+  color: var(--bgreen) !important;
+}
+
+@keyframes highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(246, 117, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(246, 117, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(246, 117, 255, 0);
+  }
+}
+
+.highlight {
+  animation: highlight 1s ease-in-out;
+  border-color: var(--bpink);
+}
+
+/* Messages */
+.success-message {
+  color: var(--bgreen);
+  padding-top: 0.5em;
+  border-radius: 4px;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  clear: both;
+}
+
+.success-message p {
+  margin: 0.5rem 0;
+}
+
+.error-message {
+  color: var(--bred);
+  padding-top: 0.5em;
+  border-radius: 4px;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  display: none;
+  border-left: 3px solid var(--bred);
+  width: 100%;
+  box-sizing: border-box;
+  clear: both;
+}
+
+#wallet__addr__error {
+  margin-top: 1rem;
+  color: var(--bred);
+  background-color: rgba(255, 120, 120, 0.1);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--bred);
+  display: none;
+}
+
+#wallet__addr__error__text {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  main {
+    max-width: 95vw;
+  }
+
+  .card-header {
+    padding: 0.7rem 1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  #wallet__gen-btn,
+  #download-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .button-container {
+    justify-content: center;
+  }
+}
