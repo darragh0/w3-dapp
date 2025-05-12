@@ -1,0 +1,94 @@
+/* Balance page styles */
+#balance-desc {
+  color: var(--bright);
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#check-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#wallet-address-input {
+  width: 100%;
+  border: 1px solid var(--dpurple);
+  background-color: var(--input-bg);
+  color: var(--bright);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95rem;
+}
+
+#check-balance-btn {
+  background-color: var(--bgreen);
+  color: var(--bg);
+}
+
+#check-balance-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+#check-balance-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+#balance-error {
+  color: var(--bred);
+  border-left: 3px solid var(--bred);
+  background-color: var(--error-bg);
+  border-radius: 4px;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  display: none;
+}
+
+#balance-error-text {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.balance-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--dpurple);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.balance-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ffffff12;
+  padding-bottom: 1rem;
+}
+
+.balance-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.balance-title {
+  font-size: 0.9rem;
+  color: var(--lgrey);
+  margin-bottom: 0.5rem;
+}
+
+.balance-value {
+  font-size: 1.1rem;
+  color: var(--bright);
+  font-family: "Roboto Mono", monospace;
+}
+
+/* Balance-specific styles */

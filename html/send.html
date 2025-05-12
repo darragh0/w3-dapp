@@ -4,16 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="../images/ico/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
-      rel="stylesheet" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <title>Tikky &ndash; Refund</title>
+    <link rel="stylesheet" href="../css/root.css" />
+    <title>Tikky &ndash; Send to Vendor</title>
   </head>
   <body>
     <nav class="navbar">
@@ -37,20 +29,30 @@
           <a href="./buy.html" class="nav-link">Buy Ticket</a>
         </li>
         <li class="nav-item active">
-          <a href="./refund.html" class="nav-link">Refund</a>
+          <a href="./send.html" class="nav-link">Send to Vendor</a>
         </li>
       </ul>
     </nav>
 
     <main>
       <header id="header">
-        <i class="fas fa-undo-alt" id="header__icon"></i>
-        <h1 id="header__title">Refund</h1>
+        <i class="fas fa-paper-plane" id="header__icon"></i>
+        <h1 id="header__title">Send to Vendor</h1>
       </header>
 
       <div class="content-placeholder">
         <p>Page under construction.</p>
       </div>
+
+      <!-- Network status indicator -->
+      <div id="network-status" class="network-status">
+        <span class="status-dot"></span>
+        <span class="status-text">Connecting to network...</span>
+      </div>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script type="module" src="../js/send.js"></script>
   </body>
 </html>

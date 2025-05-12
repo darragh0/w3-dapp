@@ -4,15 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="../images/ico/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
-      rel="stylesheet" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/buy.css" />
     <title>Tikky &ndash; Buy Ticket</title>
   </head>
   <body>
@@ -37,7 +30,7 @@
           <a href="./buy.html" class="nav-link">Buy Ticket</a>
         </li>
         <li class="nav-item">
-          <a href="./refund.html" class="nav-link">Refund</a>
+          <a href="./send.html" class="nav-link">Send to Vendor</a>
         </li>
       </ul>
     </nav>
@@ -48,9 +41,175 @@
         <h1 id="header__title">Buy Ticket</h1>
       </header>
 
-      <div class="content-placeholder">
-        <p>Page under construction.</p>
+      <div>
+        <p id="ticket-desc">
+          Purchase your Tikky ticket using SETH from Sepolia. Upload your
+          keystore file to connect your wallet and make a purchase. If you don't
+          have a keystore file, you can create one on the
+          <a href="./create-wallet.html">Create Wallet</a> page.
+        </p>
+      </div>
+
+      <div id="buy-ticket">
+        <div id="keystore-upload" class="card">
+          <div class="card-header">
+            <i class="fas fa-file-upload"></i>
+            <h2>Upload Keystore File</h2>
+          </div>
+          <div class="card-content">
+            <div class="input-title">Keystore File</div>
+            <div class="input-group">
+              <div class="file-upload-container">
+                <label for="keystore-file" class="custom-file-upload">
+                  <i class="fas fa-file-upload"></i>
+                  <span id="file-name">Choose keystore file...</span>
+                </label>
+                <input type="file" id="keystore-file" accept=".json" />
+              </div>
+            </div>
+
+            <div class="input-title">Password</div>
+            <div class="input-group">
+              <div class="wallet-input-display">
+                <input
+                  type="password"
+                  id="keystore-password"
+                  placeholder="Enter your wallet password" />
+                <button
+                  id="toggle-password-btn"
+                  class="icon-btn"
+                  title="Show Password">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="wallet-address-container" style="display: none">
+              <div class="input-title">Wallet Address</div>
+              <div class="input-group">
+                <div class="address-display">
+                  <span id="wallet-address-text"></span>
+                </div>
+              </div>
+              <div class="input-title">SETH Balance</div>
+              <div class="input-group">
+                <div class="address-display">
+                  <span id="wallet-balance-text">0.00 SETH</span>
+                </div>
+              </div>
+              <div class="input-title">Ticket Balance</div>
+              <div class="input-group">
+                <div class="address-display">
+                  <span id="ticket-balance-text">0 TTK</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button id="unlock-wallet-btn" class="action-btn">
+                <i class="fas fa-unlock"></i> Unlock Wallet
+              </button>
+            </div>
+
+            <div id="wallet-error" style="display: none">
+              <p id="wallet-error-text">
+                Please select a valid keystore file and enter your password.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="purchase-form" class="card" style="display: none">
+          <div class="card-header">
+            <i class="fas fa-shopping-cart"></i>
+            <h2>Purchase Ticket</h2>
+          </div>
+          <div class="card-content">
+            <div class="input-title">Ticket Price</div>
+            <div class="input-group">
+              <div class="address-display">
+                <span id="ticket-price">0.01 SETH</span>
+              </div>
+            </div>
+
+            <div class="input-title">Quantity</div>
+            <div class="input-group">
+              <div class="quantity-selector">
+                <button id="decrease-quantity" class="quantity-btn">-</button>
+                <input
+                  type="number"
+                  id="ticket-quantity"
+                  value="1"
+                  min="1"
+                  max="10" />
+                <button id="increase-quantity" class="quantity-btn">+</button>
+              </div>
+            </div>
+
+            <div class="input-title">Total Cost</div>
+            <div class="input-group">
+              <div class="address-display">
+                <span id="total-cost">0.01 SETH</span>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button id="buy-ticket-btn" class="action-btn">
+                <i class="fas fa-shopping-cart"></i> Buy Ticket
+              </button>
+            </div>
+
+            <div
+              id="purchase-loading"
+              style="display: none"
+              class="loading-container">
+              <div class="loading-spinner"></div>
+              <p>Processing your purchase...</p>
+            </div>
+
+            <div id="purchase-error" style="display: none">
+              <p id="purchase-error-text">
+                Insufficient balance to complete this purchase.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="purchase-success"
+          class="card success-card"
+          style="display: none">
+          <div class="card-header">
+            <i class="fas fa-check-circle"></i>
+            <h2>Purchase Successful!</h2>
+          </div>
+          <div class="card-content">
+            <div class="success-message">
+              <p>Your ticket has been purchased successfully!</p>
+              <p class="ticket-details">
+                <span id="success-quantity">1</span> ticket(s) purchased for
+                <span id="success-price">0.01 SETH</span>
+              </p>
+              <p id="success-tx" class="tx-hash"></p>
+            </div>
+            <div class="button-container">
+              <button id="new-purchase-btn" class="action-btn">
+                <i class="fas fa-plus"></i> New Purchase
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Network status indicator -->
+        <div id="network-status" class="network-status">
+          <span class="status-dot"></span>
+          <span class="status-text">Connecting to network...</span>
+        </div>
       </div>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script type="module" src="../js/buy.js"></script>
   </body>
 </html>

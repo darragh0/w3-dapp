@@ -3,17 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tikky - Web3 DApp</title>
+    <title>Tikky - Hello Kitty Con 2025 Tickets</title>
     <link rel="icon" type="image/x-icon" href="./images/ico/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
-      rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/root.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -37,18 +30,55 @@
           <a href="./html/buy.html" class="nav-link">Buy Ticket</a>
         </li>
         <li class="nav-item">
-          <a href="./html/refund.html" class="nav-link">Refund</a>
+          <a href="./html/send.html" class="nav-link">Send to Vendor</a>
         </li>
       </ul>
     </nav>
 
-    <main class="content">
-      <h1>Welcome to Tikky</h1>
-      <p>Your Web3 DApp for blockchain tickets and events.</p>
-      <button id="create-wallet-btn" class="action-btn">Create a Wallet</button>
+    <main>
+      <div class="hero">
+        <h1>Hello Kitty Con 2025</h1>
+        <h2 id="event-dates">June 5 &ndash; 10</h2>
+        <p>
+          Get your blockchain tickets for the most adorable event of the year!
+        </p>
+      </div>
+      <div class="event-details">
+        <h2 id="event-details-h2">
+          <i class="fas fa-asterisk"></i>&nbsp; Event Details
+        </h2>
+
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>June 5, 2025</span>
+          </div>
+          <div class="event-meta-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dublin, Ireland</span>
+          </div>
+          <div class="event-meta-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Limited Tickets</span>
+          </div>
+        </div>
+
+        <p>
+          Join us for the ultimate
+          <span class="event-highlight">Hello Kitty Con 2025</span> experience
+          in Dublin! This one-day event features exclusive merchandise,
+          interactive exhibits, and special guest appearances. Secure your spot
+          with <span id="tikky-span">Tikky</span>, our secure blockchain-powered
+          ticketing system.
+        </p>
+
+        <button id="buy-ticket-btn" class="action-btn">
+          Buy Your Ticket Now
+        </button>
+      </div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

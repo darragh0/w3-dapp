@@ -1,20 +1,19 @@
 /**
- * Handle the creation of Ethereum wallets using `web3.js`.
+ * @file Ethereum wallet creation and management.
+ * @author darragh0
  *
- * This module provides functions to generate a wallet, display its details,
- * and download the wallet keystore file.
- *
- * @module create-wallet
+ * @requires Web3
+ * @requires jQuery
+ * @requires network-utils
  */
 
-// Init. global Web3 instance
-const w3 = new Web3();
+import { web3, connectToRPC } from "./network-utils.js";
 
-// Characters used for auto-gen'd pw
+// Chars for password gen
 const PW_CHARS =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:,.<>?";
 
-// Wallet details HTML template (added when wallet is generated)
+// Wallet details HTML template (inserted on wallet gen)
 const WALLET_DETAILS_TEMPLATE = `
   <div id="wallet__addr" class="card">
     <div class="card-header">
@@ -78,37 +77,28 @@ const WALLET_DETAILS_TEMPLATE = `
 `;
 
 /**
- * @typedef {Object} Wallet
+ * Toggle password visibility.
  *
- * @property {string} address - Wallet address
- * @property {string} privateKey - Wallet private key
- * @property {Object} keystoreData - Encrypted keystore data
- * @property {string} password - Password used to encrypt the wallet
- */
-
-/**
- * Toggles password visibility in the `passwordInput` field.
- *
- * @param {jQuery} toggleVisBtn - Button element to toggle visibility
+ * @param {jQuery} toggleBtn - Toggle button element
  * @param {jQuery} pwInput - Password input element
  */
-function setToggleablePw(toggleVisBtn, pwInput) {
+function setToggleablePw(toggleBtn, pwInput) {
   if (pwInput.attr("type") === "password") {
     pwInput.attr("type", "text");
-    toggleVisBtn.html('<i class="fas fa-eye-slash"></i>');
-    toggleVisBtn.attr("title", "Hide Password");
+    toggleBtn.html('<i class="fas fa-eye-slash"></i>');
+    toggleBtn.attr("title", "Hide Password");
   } else {
     pwInput.attr("type", "password");
-    toggleVisBtn.html('<i class="fas fa-eye"></i>');
-    toggleVisBtn.attr("title", "Show Password");
+    toggleBtn.html('<i class="fas fa-eye"></i>');
+    toggleBtn.attr("title", "Show Password");
   }
 }
 
 /**
- * Copy text to clipboard & show a success animation.
+ * Copy text to clipboard (w/ success animation).
  *
- * @param {jQuery} textEl - Element containing the text to copy
- * @param {jQuery} copyBtn - Button element to copy text
+ * @param {jQuery} textEl - Element with text to copy
+ * @param {jQuery} copyBtn - Button that triggers copy
  */
 function copyToClipboard(textEl, copyBtn) {
   const text = textEl.text();
@@ -131,19 +121,17 @@ function copyToClipboard(textEl, copyBtn) {
 }
 
 /**
- * Generate a random secure password for the wallet.
+ * Generate random secure password.
  *
- * @param {number} len - Length of password to generate
- * @returns {string} - Randomly generated password
+ * @param {number} len - Length of password
+ * @returns {string} Generated password
  */
 function genPw(len = 64) {
   let pw = "";
-
   for (let i = 0; i < len; i++) {
     pw += PW_CHARS.charAt(Math.floor(Math.random() * PW_CHARS.length));
   }
 
-  // Shuffle pw some more
   return pw
     .split("")
     .sort(() => 0.5 - Math.random())
@@ -151,15 +139,15 @@ function genPw(len = 64) {
 }
 
 /**
- * Generate a new Ethereum wallet.
+ * Generate new Ethereum wallet.
  *
  * @param {string} pw - Password for keystore encryption
- * @returns {Wallet|null} - Web3 wallet object or null if error
+ * @returns {Wallet|null} Wallet object or null on error
  */
 function genWallet(pw) {
   try {
-    const wallet = w3.eth.accounts.create();
-    const keystoreData = w3.eth.accounts.encrypt(wallet.privateKey, pw);
+    const wallet = web3.eth.accounts.create();
+    const keystoreData = web3.eth.accounts.encrypt(wallet.privateKey, pw);
 
     return {
       address: wallet.address,
@@ -174,14 +162,13 @@ function genWallet(pw) {
 }
 
 /**
- * Download wallet details as a keystore file.
+ * Download wallet as keystore file.
  *
- * @param {Wallet} wallet - Web3 wallet object
+ * @param {Wallet} wallet - Wallet object
  */
 function dlKeystore(wallet) {
   try {
-    const keystoreData = wallet.keystoreData;
-    const dataStr = JSON.stringify(keystoreData, null, 2);
+    const dataStr = JSON.stringify(wallet.keystoreData, null, 2);
     const dataBlob = new Blob([dataStr], { type: "application/json" });
 
     const downloadLink = document.createElement("a");
@@ -191,7 +178,6 @@ function dlKeystore(wallet) {
     downloadLink.click();
     document.body.removeChild(downloadLink);
 
-    // Show a success message
     showMsg(
       true,
       `
@@ -207,11 +193,11 @@ function dlKeystore(wallet) {
 }
 
 /**
- * Show success or error message in the given container.
+ * Show message in UI.
  *
  * @param {boolean} isSuccess - Whether this is a success message
  * @param {string} msg - HTML content of the message
- * @param {number} dur - How long to display the message (in ms)
+ * @param {number} dur - Display duration in ms
  */
 function showMsg(isSuccess, msg, dur) {
   const messageClass = isSuccess ? "success-message" : "error-message";
@@ -228,9 +214,9 @@ function showMsg(isSuccess, msg, dur) {
 }
 
 /**
- * Show error message in the wallet form.
+ * Show error message in wallet form.
  *
- * @param {string} msg - HTML content of the error message
+ * @param {string} msg - Error message HTML
  */
 function showWalletFormError(msg) {
   $("#wallet_error_message").remove();
@@ -249,9 +235,9 @@ function showWalletFormError(msg) {
 }
 
 /**
- * Render wallet details UI section.
+ * Render wallet details in UI.
  *
- * @param {Wallet} wallet - Web3 wallet to display
+ * @param {Wallet} wallet - Wallet to display
  */
 function renderWalletDetails(wallet) {
   if (!wallet) {
@@ -264,21 +250,17 @@ function renderWalletDetails(wallet) {
 
   const walletDetailsContainer = $("#wallet-details-container");
 
-  // Add wallet details to page if not already there
   if (walletDetailsContainer.children().length === 0) {
     walletDetailsContainer.html(WALLET_DETAILS_TEMPLATE);
     initializeWalletDetailsUI(wallet);
   }
 
-  // Update wallet address, password and private key display
   $("#wallet__addr__text").text(wallet.address);
   $("#wallet__password__text").text(wallet.password);
   $("#wallet__private__text").text(wallet.privateKey);
 
-  // Apply the same styling to password display as private key display
   $("#wallet__password__display").addClass("private-key-display hidden-key");
 
-  // Highlight the fields to draw attention
   $(".address-display")
     .addClass("highlight")
     .delay(1000)
@@ -286,10 +268,8 @@ function renderWalletDetails(wallet) {
       $(this).removeClass("highlight").dequeue();
     });
 
-  // Hide any error messages
   $("#wallet__addr__error").hide();
 
-  // Scroll to the wallet details
   $("html, body").animate(
     {
       scrollTop: walletDetailsContainer.offset().top - 20,
@@ -299,9 +279,9 @@ function renderWalletDetails(wallet) {
 }
 
 /**
- * Initialize event handlers for wallet details UI section.
+ * Initialize event handlers for wallet details UI.
  *
- * @param {Wallet} wallet - Web3 wallet object
+ * @param {Wallet} wallet - Wallet object
  */
 function initializeWalletDetailsUI(wallet) {
   const togglePrivateKeyBtn = $("#toggle-private-key-btn");
@@ -314,10 +294,8 @@ function initializeWalletDetailsUI(wallet) {
   const passwordDisplay = $("#wallet__password__display");
   const errorContainer = $("#wallet__addr__error");
 
-  // Hide error container initially
   errorContainer.hide();
 
-  // Add toggle functionality for private key visibility
   togglePrivateKeyBtn.on("click", function () {
     privateKeyDisplay.toggleClass("hidden-key");
 
@@ -330,7 +308,6 @@ function initializeWalletDetailsUI(wallet) {
     }
   });
 
-  // Add toggle functionality for password visibility
   togglePasswordDisplayBtn.on("click", function () {
     passwordDisplay.toggleClass("hidden-key");
 
@@ -343,7 +320,6 @@ function initializeWalletDetailsUI(wallet) {
     }
   });
 
-  // Add event listeners for copy buttons
   copyBtn.on("click", function () {
     copyToClipboard($("#wallet__addr__text"), $(this));
   });
@@ -356,46 +332,44 @@ function initializeWalletDetailsUI(wallet) {
     copyToClipboard($("#wallet__private__text"), $(this));
   });
 
-  // Add event listener for the download button
   downloadBtn.on("click", function () {
     dlKeystore(wallet);
   });
 }
 
-// Entry point on load
 jQuery(() => {
   const pwInput = $("#wallet__password");
   const togglePwBtn = $("#toggle-password-btn");
   const genWalletBtn = $("#wallet__gen-btn");
+
+  // Init Web3 connection
+  connectToRPC(() => {
+    console.log("Web3 initialized for wallet creation");
+  });
 
   togglePwBtn.on("click", () => {
     setToggleablePw(togglePwBtn, pwInput);
   });
 
   genWalletBtn.on("click", () => {
-    // Remove existing error msgs (if any)
     $("#wallet_error_message").remove();
 
     let password = pwInput.val().trim();
     let isAutoGenerated = false;
 
-    // Gen pw if not provided
     if (!password) {
       password = genPw();
       isAutoGenerated = true;
       pwInput.val(password);
     }
 
-    // Show "Generating..." w/ spinner on btn
     genWalletBtn.prop("disabled", true);
     genWalletBtn.html('<i class="fas fa-spinner fa-spin"></i> Generating...');
 
-    // Gen wallet
     setTimeout(() => {
       const wallet = genWallet(password);
       renderWalletDetails(wallet);
 
-      // If pw was auto-gen'd, tell user
       if (isAutoGenerated) {
         showMsg(
           true,
@@ -404,14 +378,13 @@ jQuery(() => {
         );
       }
 
-      // Reset btn
       genWalletBtn.prop("disabled", false);
       genWalletBtn.html('<i class="fas fa-key"></i> Generate Wallet');
     }, 500);
   });
 
-  // Click "Generate Wallet" button on enter key (13)
-  pwInput.on("keypress", function (e) {
+  // Submit form on `Enter` (13) key
+  pwInput.on("keypress", (e) => {
     if (e.which === 13) {
       genWalletBtn.click();
       e.preventDefault();

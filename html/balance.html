@@ -4,15 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="../images/ico/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
-      rel="stylesheet" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/balance.css" />
     <title>Tikky &ndash; Check Balance</title>
   </head>
   <body>
@@ -37,20 +30,93 @@
           <a href="./buy.html" class="nav-link">Buy Ticket</a>
         </li>
         <li class="nav-item">
-          <a href="./refund.html" class="nav-link">Refund</a>
+          <a href="./send.html" class="nav-link">Send to Vendor</a>
         </li>
       </ul>
     </nav>
 
     <main>
       <header id="header">
-        <i class="fas fa-coins" id="header__icon"></i>
+        <i class="fas fa-wallet" id="header__icon"></i>
         <h1 id="header__title">Check Balance</h1>
       </header>
 
-      <div class="content-placeholder">
-        <p>Page under construction.</p>
+      <div>
+        <p id="balance-desc">
+          Check your Sepolia ETH (SETH) balance and TikkyTicket (TTK) tokens.
+          Enter your wallet address below to view your balances.
+        </p>
+      </div>
+
+      <div id="check-balance" class="card">
+        <div class="card-header">
+          <i class="fas fa-search-dollar"></i>
+          <h2>Lookup Wallet Balance</h2>
+        </div>
+        <div class="card-content">
+          <div class="input-title">Enter Wallet Address</div>
+          <div class="input-group">
+            <input type="text" id="wallet-address-input" placeholder="0x..." />
+          </div>
+
+          <div class="button-container">
+            <button id="check-balance-btn" class="action-btn">
+              <i class="fas fa-search"></i> Check Balance
+            </button>
+          </div>
+
+          <div id="balance-error" style="display: none">
+            <p id="balance-error-text">
+              Please enter a valid Ethereum address.
+            </p>
+          </div>
+
+          <div
+            id="balance-loading"
+            style="display: none"
+            class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>Fetching balance information...</p>
+          </div>
+
+          <div id="balance-results" style="display: none">
+            <div class="balance-card">
+              <div class="balance-item">
+                <div class="balance-title">Wallet Address</div>
+                <div class="balance-value">
+                  <div class="address-display">
+                    <span id="display-address-text"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="balance-item">
+                <div class="balance-title">
+                  <i class="fab fa-ethereum"></i> SETH Balance
+                </div>
+                <div class="balance-value" id="eth-balance">0.00 SETH</div>
+              </div>
+
+              <div class="balance-item">
+                <div class="balance-title">
+                  <i class="fas fa-ticket-alt"></i> TTK Balance
+                </div>
+                <div class="balance-value" id="ttk-balance">0 TTK</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Network status indicator -->
+      <div id="network-status" class="network-status">
+        <span class="status-dot"></span>
+        <span class="status-text">Connecting to network...</span>
       </div>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script type="module" src="../js/balance.js"></script>
   </body>
 </html>
