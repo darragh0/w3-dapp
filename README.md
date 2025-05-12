@@ -15,7 +15,8 @@ If you are using [VSCode](https://code.visualstudio.com), install the [Live Serv
 If you are not using VSCode or do not wish to use the Live Server plugin, you can use [Node.js](https://nodejs.org/en). Simply run `npm install && npm run serve`.
 
 Either method should start a local server that you can open in your browser (typically at [localhost:5500](http://localhost:5500)).
-<br />
+
+<br /><br />
 > [!WARNING]
 > This application relies on CDNs to fetch dependencies (`web3.js` & `jQuery`) and may fail if the sources are offline.
 
