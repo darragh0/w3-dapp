@@ -4,10 +4,9 @@
 [![ETHEREUM](https://img.shields.io/badge/Ethereum-gray?logo=ethereum&logoColor=black&labelColor=white)](https://en.wikipedia.org/wiki/Ethereum)
 
 <p align="center">
-    A Web3 Distributed Application (DApp) that implements a simple ticketing system.<br /><br />
-    <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
+    <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" /><br /><br />
+    A Web3 Distributed Application (DApp) that implements a simple ticketing system.
 </p>
-<br />
 
 ## Running the App
 If you are using [VSCode](https://code.visualstudio.com), install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension (if you don't have it), clone and open this repository in VSCode, and simply click on the <code style="color: Cyan">"Go Live"</code> button at the bottom right of the UI.
@@ -16,7 +15,7 @@ If you are not using VSCode or do not wish to use the Live Server plugin, you ca
 
 Either method should start a local server that you can open in your browser (typically at [localhost:5500](http://localhost:5500)).
 
-<br /><br />
+<br />
 > [!WARNING]
 > This application relies on CDNs to fetch dependencies (`web3.js` & `jQuery`) and may fail if the sources are offline.
 
