@@ -4,8 +4,8 @@
 [![ETHEREUM](https://img.shields.io/badge/Ethereum-gray?logo=ethereum&logoColor=black&labelColor=white)](https://en.wikipedia.org/wiki/Ethereum)
 
 <p align="center">
-    A Web3 Distributed Application (DApp) that implements a simple ticketing system.
-    <br /><img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
+    A Web3 Distributed Application (DApp) that implements a simple ticketing system.<br /><br />
+    <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
 </p>
 
 ## Running the App
