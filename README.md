@@ -3,9 +3,9 @@
 [![WEB3JS](https://img.shields.io/badge/web3.js-blue?logo=web3dotjs&logoColor=blue&labelColor=white)](https://web3js.readthedocs.io/en/v1.10.0)
 [![ETHEREUM](https://img.shields.io/badge/Ethereum-gray?logo=ethereum&logoColor=black&labelColor=white)](https://en.wikipedia.org/wiki/Ethereum)
 
-<p align="center" style="margin-bottom: 100px">
+<p align="center">
     A Web3 Distributed Application (DApp) that implements a simple ticketing system.
-    <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
+    <br /><img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
 </p>
 
 ## Running the App
