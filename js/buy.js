@@ -53,16 +53,6 @@ function setupContract(web3Inst) {
 }
 
 $(document).ready(function () {
-  // Add stylesheet if not already present
-  if (!$('link[href="../css/buy.css"]').length) {
-    $("<link>")
-      .attr({
-        rel: "stylesheet",
-        href: "../css/buy.css",
-      })
-      .appendTo("head");
-  }
-
   connectToRPC((web3Inst) => {
     setupContract(web3Inst);
   });
@@ -194,14 +184,15 @@ $(document).ready(function () {
   // Buy ticket button handler
   $("#buy-ticket-btn").on("click", function () {
     const quantity = parseInt($("#ticket-quantity").val()) || 1;
-    const totalCost = quantity * TICKET_PRICE;
+    // Calculate totalCost with string operations to avoid floating point errors
+    const totalCost = (quantity * parseFloat(TICKET_PRICE)).toFixed(6);
 
     $("#purchase-error").hide();
     $("#purchase-loading").show();
 
     $("#buy-ticket-btn").prop("disabled", true).text("Processing...");
 
-    if (totalCost > currentWallet.balance) {
+    if (parseFloat(totalCost) > currentWallet.balance) {
       $("#purchase-error-text").text(
         "Insufficient balance to complete this purchase."
       );
@@ -228,9 +219,10 @@ $(document).ready(function () {
  */
 function updateTotalCost() {
   const quantity = parseInt($("#ticket-quantity").val()) || 1;
-  const totalCost = quantity * TICKET_PRICE;
+  // Calculate totalCost with string operations to avoid floating point errors
+  const totalCost = (quantity * parseFloat(TICKET_PRICE)).toFixed(6);
   $("#ticket-price").text(`${TICKET_PRICE} SETH`);
-  $("#total-cost").text(`${totalCost.toFixed(6)} SETH`);
+  $("#total-cost").text(`${totalCost} SETH`);
 }
 
 /**
@@ -385,8 +377,14 @@ async function purchaseTickets(quantity, totalCost) {
       }
     }
 
+    // Use BigNumber to handle the math precisely
+    // Instead of calculating totalCost with floating point math, use the ticket price in wei and multiply by quantity
     const ticketPriceWei = web3.utils.toWei(TICKET_PRICE.toString(), "ether");
-    const totalCostWei = web3.utils.toWei(totalCost.toString(), "ether");
+    // Calculate totalCostWei directly from ticketPriceWei to avoid floating point errors
+    const totalCostWei = web3.utils
+      .toBN(ticketPriceWei)
+      .muln(quantity)
+      .toString();
 
     const gasEstimate = await ticketContract.methods
       .buyTickets(quantity)
@@ -432,7 +430,9 @@ async function purchaseTickets(quantity, totalCost) {
 
     // Update UI with success information
     $("#success-quantity").text(quantity);
-    $("#success-price").text(`${totalCost.toFixed(6)} SETH`);
+    // Convert to display format from wei (this is safe since we're just displaying)
+    const displayTotalCost = web3.utils.fromWei(totalCostWei, "ether");
+    $("#success-price").text(`${parseFloat(displayTotalCost).toFixed(6)} SETH`);
     $("#success-tx").html(
       `Transaction hash: <a href="https://sepolia.etherscan.io/tx/${receipt.transactionHash}" target="_blank">${receipt.transactionHash}</a>`
     );

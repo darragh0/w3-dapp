@@ -81,6 +81,13 @@ body {
   display: flex;
 }
 
+.navbar-brand a img {
+  scale: 1.3;
+  transform: translateY(0.115em);
+  /* scale: 1.3; */
+  margin-right: 0.1em;
+}
+
 .navbar-logo {
   color: var(--bright);
   align-items: center;

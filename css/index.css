@@ -8,6 +8,7 @@
   border-radius: 1em;
   border: 1px solid var(--bpink);
   margin: 20px;
+  margin-top: -1em;
 }
 
 .hero p {
@@ -28,7 +29,7 @@
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-top: 2em;
+  margin-top: 3em;
   margin-bottom: 3em;
 }
 
@@ -52,20 +53,30 @@
 }
 
 .action-btn {
-  background-color: var(--bpink);
-  color: #000;
+  background-color: var(--dpink);
+  color: var(--bg);
   border: none;
   padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 50px;
+  font-size: 0.95rem;
+  border-radius: 4px;
   cursor: pointer;
   margin-top: 30px;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .action-btn:hover {
-  background-color: var(--dpink);
-  transform: scale(1.05);
+  background-color: var(--bpink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .event-highlight {

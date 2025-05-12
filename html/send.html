@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="../images/ico/favicon.ico" />
     <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/send.css" />
     <title>Tikky &ndash; Send to Vendor</title>
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-brand">
         <a href="../index.html" class="navbar-logo">
-          <img src="../images/ico/favicon.ico" alt="Tikky Logo" />
+          <img src="../images/png/hk.png" alt="Tikky Logo" />
           <span>Tikky</span>
         </a>
       </div>
@@ -40,8 +41,161 @@
         <h1 id="header__title">Send to Vendor</h1>
       </header>
 
-      <div class="content-placeholder">
-        <p>Page under construction.</p>
+      <div>
+        <p id="send-desc">
+          Send your tickets back to the vendor. Upload your keystore file to
+          connect your wallet. If you don't have a keystore file, you can create
+          one on the
+          <a href="./create-wallet.html">Create Wallet</a> page.
+        </p>
+      </div>
+
+      <div id="send-to-vendor">
+        <div id="keystore-upload" class="card">
+          <div class="card-header">
+            <i class="fas fa-file-upload"></i>
+            <h2>Upload Keystore File</h2>
+          </div>
+          <div class="card-content">
+            <div class="input-title">Keystore File</div>
+            <div class="input-group">
+              <div class="file-upload-container">
+                <label for="keystore-file" class="custom-file-upload">
+                  <i class="fas fa-file-upload"></i>
+                  <span id="file-name">Choose keystore file...</span>
+                </label>
+                <input type="file" id="keystore-file" accept=".json" />
+              </div>
+            </div>
+
+            <div class="input-title">Password</div>
+            <div class="input-group">
+              <div class="wallet-input-display">
+                <input
+                  type="password"
+                  id="keystore-password"
+                  placeholder="Enter your wallet password" />
+                <button
+                  id="toggle-password-btn"
+                  class="icon-btn"
+                  title="Show Password">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button id="decrypt-wallet-btn" class="action-btn">
+                <i class="fas fa-unlock"></i> Unlock Wallet
+              </button>
+            </div>
+
+            <div id="wallet-error" style="display: none">
+              <p id="wallet-error-text">
+                Please select a valid keystore file and enter your password.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="wallet-info" class="card" style="display: none">
+          <div class="card-header">
+            <i class="fas fa-wallet"></i>
+            <h2>Wallet Information</h2>
+          </div>
+          <div class="card-content">
+            <div class="input-title">Wallet Address</div>
+            <div class="input-group">
+              <div class="address-display">
+                <span id="wallet-address-text"></span>
+              </div>
+            </div>
+            <div class="input-title">Ticket Balance</div>
+            <div class="input-group">
+              <div class="address-display">
+                <span id="ticket-balance-text">0 TTK</span>
+              </div>
+            </div>
+
+            <div id="send-form" style="margin-top: 1.5rem; display: none">
+              <div class="input-title">Number of Tickets to Send</div>
+              <div class="input-group">
+                <div class="quantity-selector">
+                  <button id="decrease-tickets-btn" class="quantity-btn">-</button>
+                  <input
+                    type="number"
+                    id="ticket-amount"
+                    value="1"
+                    min="1" />
+                  <button id="increase-tickets-btn" class="quantity-btn">+</button>
+                </div>
+              </div>
+
+              <div class="button-container">
+                <button id="send-tickets-btn" class="action-btn">
+                  <i class="fas fa-paper-plane"></i> Send Tickets to Vendor
+                </button>
+              </div>
+            </div>
+            </div>
+
+            <div
+              id="no-tickets-message"
+              class="error-container"
+              style="display: none; margin-top: 1.5rem">
+              <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>You don't have any tickets to send.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="transaction-summary" class="card" style="display: none;">
+          <div class="card-header">
+            <i class="fas fa-file-contract"></i>
+            <h2>Transaction Summary</h2>
+          </div>
+          <div class="card-content">
+            <div class="summary-item">
+              <div class="summary-label">From Address:</div>
+              <div class="summary-value" id="summary-from-address"></div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-label">To Address (Vendor):</div>
+              <div class="summary-value" id="summary-to-address"></div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-label">Tickets to Send:</div>
+              <div class="summary-value" id="summary-token-amount"></div>
+            </div>
+
+            <div id="transaction-status" class="status-box">
+              <i class="fas fa-spinner fa-spin"></i>
+              <span id="status-message">Preparing transaction...</span>
+            </div>
+
+            <div id="transaction-result-container">
+              <div class="input-title">Transaction Hash</div>
+              <div id="transaction-hash-container">
+                <span id="transaction-hash"></span>
+                <button
+                  class="copy-btn"
+                  id="copy-tx-hash"
+                  title="Copy transaction hash">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+              <a
+                href="#"
+                id="etherscan-link"
+                class="etherscan-link"
+                target="_blank">
+                <i class="fas fa-external-link-alt"></i> View on Etherscan
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Network status indicator -->

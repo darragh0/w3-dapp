@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     if (!web3) {
       $("#balance-error-text").text(
-        "Network connection not established yet. Please try again."
+        "Network connection not established yet. Please wait momentarily before trying again."
       );
       $("#balance-error").show();
       return;

@@ -1,0 +1,321 @@
+/* Styles specific to the Send to Vendor page */
+
+#send-desc {
+  color: var(--bright);
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#send-desc a {
+  color: var(--bpink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#send-desc a:hover {
+  color: var(--bgreen);
+  text-decoration: underline;
+}
+
+#send-to-vendor {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.input-title:first-of-type {
+  margin-bottom: 0.25em;
+}
+
+.file-upload-container {
+  width: 65%;
+  margin-left: -0.925em;
+  margin-bottom: 2em;
+}
+
+.custom-file-upload {
+  border: 1px solid var(--dpurple);
+  color: var(--bright);
+  background-color: var(--input-bg);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1.5em;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.custom-file-upload i {
+  margin-right: 10px;
+  color: var(--bgreen);
+}
+
+.custom-file-upload span {
+  color: var(--lgrey);
+  opacity: 0.7;
+}
+
+#keystore-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.custom-file-upload.highlight {
+  animation: highlight-pulse 1s ease-in-out;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    border-color: var(--highlight-start);
+    box-shadow: 0 0 5px var(--highlight-start);
+  }
+  50% {
+    border-color: var(--dpurple);
+    box-shadow: 0 0 10px var(--highlight-mid);
+  }
+  100% {
+    border-color: var(--dpurple);
+    box-shadow: 0 0 0 var(--highlight-end);
+  }
+}
+
+.send-ticket-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Ticket quantity selector styling - matching buy.css */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--dpurple);
+  background-color: var(--input-bg);
+  border-radius: 4px;
+}
+
+.quantity-btn {
+  background-color: transparent;
+  color: var(--bgreen);
+  border: none;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.quantity-btn:hover {
+  color: var(--bpink);
+  background-color: var(--hover-bg);
+}
+
+#ticket-amount {
+  background-color: transparent;
+  border: none;
+  color: var(--bright);
+  text-align: center;
+  width: 60px;
+  font-size: 0.95rem;
+  font-family: "Roboto Mono", monospace;
+  height: 2.2rem;
+  /* Remove arrows/spinners from number input */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Remove arrows/spinners for Chrome, Safari, Edge, Opera */
+#ticket-amount::-webkit-outer-spin-button,
+#ticket-amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#transaction-summary {
+  margin-top: 1.5rem;
+  display: none; /* Hide by default until transaction is initiated */
+}
+
+#transaction-result-container {
+  margin-top: 1.5rem;
+  display: none;
+}
+
+#wallet-error {
+  color: var(--bred);
+  border-left: 3px solid var(--bred);
+  background-color: var(--error-bg);
+  border-radius: 4px;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  display: none;
+}
+
+#wallet-error-text {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.summary-item {
+  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.summary-label {
+  font-weight: 500;
+  width: 40%;
+  color: var(--lgrey);
+}
+
+.summary-value {
+  font-family: "Roboto Mono", monospace;
+  color: var(--bright);
+}
+
+.status-box {
+  background-color: var(--input-bg);
+  border: 1px solid var(--dpurple);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.status-box.success {
+  background-color: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--bgreen);
+}
+
+.status-box.error {
+  background-color: var(--error-bg);
+  border: 1px solid var(--bred);
+  color: var(--bred);
+}
+
+/* Match button styles from buy.css */
+#send-tickets-btn {
+  background-color: var(--dpink);
+  color: var(--bg);
+}
+
+#send-tickets-btn:hover {
+  background-color: var(--bpink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+#send-tickets-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+#decrypt-wallet-btn {
+  background-color: var(--dpink);
+  color: var(--bg);
+}
+
+#decrypt-wallet-btn:hover {
+  background-color: var(--bpink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+#decrypt-wallet-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+#transaction-hash-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+#transaction-hash {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+  margin-right: 0.5rem;
+  color: var(--bright);
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--bpink);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--dpink);
+  transform: scale(1.1);
+}
+
+.etherscan-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--bpink);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.etherscan-link:hover {
+  color: var(--dpink);
+  text-decoration: underline;
+}
+
+/* Match the primary buttons to the site's action-btn style */
+.primary-button {
+  cursor: pointer;
+  background-color: var(--bpink);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  margin-top: 1rem;
+}
+
+.primary-button:hover {
+  background-color: var(--dpink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+/* Add button container style for consistency */
+.button-container {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+}

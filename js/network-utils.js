@@ -10,7 +10,6 @@
 // RPC endpoints for Sepolia network
 const RPC_ENDPOINTS = [
   "https://rpc2.sepolia.org",
-  "https://eth-sepolia.g.alchemy.com/v2/demo",
   "https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
   "https://ethereum-sepolia.publicnode.com",
 ];
