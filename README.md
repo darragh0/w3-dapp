@@ -3,10 +3,9 @@
 [![WEB3JS](https://img.shields.io/badge/web3.js-blue?logo=web3dotjs&logoColor=blue&labelColor=white)](https://web3js.readthedocs.io/en/v1.10.0)
 [![ETHEREUM](https://img.shields.io/badge/Ethereum-gray?logo=ethereum&logoColor=black&labelColor=white)](https://en.wikipedia.org/wiki/Ethereum)
 
-A Web3 Distributed Application (DApp) that implements a simple ticketing system.
-
-<p align="center">
-    <img width=600 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
+<p align="center" style="margin-bottom: 100px">
+    A Web3 Distributed Application (DApp) that implements a simple ticketing system.
+    <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
 </p>
 
 ## Running the App
@@ -22,5 +21,4 @@ If you are not using VSCode or do not wish to use the Live Server plugin, you ca
 > This application relies on CDNs to fetch dependencies (`web3.js` & `jQuery`) and may fail if the sources are offline.
 
 > [!CAUTION]
-> I do not recommend connecting 
 > This project is for testing/demo purposes only, so please **do not** upload keystore files that contain access to real funds.
