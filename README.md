@@ -6,7 +6,7 @@
 A Web3 Distributed Application (DApp) that implements a simple ticketing system.
 
 <p align="center">
-    <img alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
+    <img width=600 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
 </p>
 
 ## Running the App
