@@ -7,15 +7,14 @@
     A Web3 Distributed Application (DApp) that implements a simple ticketing system.<br /><br />
     <img width=800 alt="Home Page Screenshot" src="./images/docs/png/home-page.png" />
 </p>
+<br /><br />
 
 ## Running the App
-If you are using [VSCode](https://code.visualstudio.com), install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension (if you don't have it), clone and open this repository in VSCode, and simply click on the <code style="color: Cyan">"Go Live"</code> button at the bottom right of the UI (see below).
-
-![Live Server Screenshot](./images/docs/png/live-server.png)
-
-This should start a local server that you can open in your browser (typically at <http://localhost:5500>).
+If you are using [VSCode](https://code.visualstudio.com), install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension (if you don't have it), clone and open this repository in VSCode, and simply click on the <code style="color: Cyan">"Go Live"</code> button at the bottom right of the UI.
 
 If you are not using VSCode or do not wish to use the Live Server plugin, you can use [Node.js](https://nodejs.org/en). Simply run `npm install && npm run serve`.
+
+Either method should start a local server that you can open in your browser (typically at [localhost:5500](http://localhost:5500)).
 
 > [!WARNING]
 > This application relies on CDNs to fetch dependencies (`web3.js` & `jQuery`) and may fail if the sources are offline.
