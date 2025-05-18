@@ -1,3 +1,5 @@
+/* === "Buy Ticket" Page Styles === */
+
 #ticket-desc {
   color: var(--bright);
   opacity: 0.9;
@@ -137,12 +139,10 @@
   font-size: 0.95rem;
   font-family: "Roboto Mono", monospace;
   height: 2.2rem;
-  /* Remove arrows/spinners from number input */
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-/* Remove arrows/spinners for Chrome, Safari, Edge, Opera */
 #ticket-quantity::-webkit-outer-spin-button,
 #ticket-quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -153,27 +153,23 @@
   outline: none;
 }
 
-/* Remove arrows/spinners from number input */
 #ticket-quantity::-webkit-outer-spin-button,
 #ticket-quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* For Firefox */
 #ticket-quantity {
   -moz-appearance: textfield;
   appearance: textfield; /* Standard property for compatibility */
 }
 
-/* Remove arrows/spinners from number input */
 #ticket-quantity::-webkit-outer-spin-button,
 #ticket-quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* For Firefox */
 #ticket-quantity {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -249,11 +245,7 @@
   font-size: 0.9rem;
 }
 
-/* Buy page specific button styles */
-
 .mini-button:hover {
   background-color: var(--bpink);
   transform: translateY(-1px);
 }
-
-/* Buy page specific styles */

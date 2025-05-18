@@ -15,6 +15,9 @@ If you are not using VSCode or do not wish to use the Live Server plugin, you ca
 
 Either method should start a local server that you can open in your browser (typically at [localhost:5500](http://localhost:5500)).<br />
 
+## Contract Information
+The Solidity smart contract for this application (`0x20756e089701c7DAE04aa5895213F6FDAE644030`) can be found [here](https://sepolia.etherscan.io/address/0x20756e089701c7DAE04aa5895213F6FDAE644030). I have included a copy of the Solidity file in this repository: [`TikkyToken.sol`](./TikkyToken.sol).
+
 > [!WARNING]
 > This application relies on CDNs to fetch dependencies (`web3.js` & `jQuery`) and may fail if the sources are offline.
 

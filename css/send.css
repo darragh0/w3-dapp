@@ -1,4 +1,4 @@
-/* Styles specific to the Send to Vendor page */
+/* === "Send to Vendor" Page Styles === */
 
 #send-desc {
   color: var(--bright);
@@ -97,7 +97,6 @@
   margin-top: 1rem;
 }
 
-/* Ticket quantity selector styling - matching buy.css */
 .quantity-selector {
   display: flex;
   align-items: center;
@@ -131,12 +130,10 @@
   font-size: 0.95rem;
   font-family: "Roboto Mono", monospace;
   height: 2.2rem;
-  /* Remove arrows/spinners from number input */
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-/* Remove arrows/spinners for Chrome, Safari, Edge, Opera */
 #ticket-amount::-webkit-outer-spin-button,
 #ticket-amount::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -145,7 +142,7 @@
 
 #transaction-summary {
   margin-top: 1.5rem;
-  display: none; /* Hide by default until transaction is initiated */
+  display: none; /* Hide by default until transaction initiated */
 }
 
 #transaction-result-container {
@@ -207,7 +204,6 @@
   color: var(--bred);
 }
 
-/* Match button styles from buy.css */
 #send-tickets-btn {
   background-color: var(--dpink);
   color: var(--bg);
@@ -281,7 +277,6 @@
   text-decoration: underline;
 }
 
-/* Match the primary buttons to the site's action-btn style */
 .primary-button {
   cursor: pointer;
   background-color: var(--bpink);
@@ -311,7 +306,6 @@
   box-shadow: 0 2px 4px var(--shadow-light);
 }
 
-/* Add button container style for consistency */
 .button-container {
   flex-wrap: wrap;
   justify-content: flex-start;

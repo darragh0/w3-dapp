@@ -48,20 +48,68 @@
         </p>
       </div>
 
-      <div id="check-balance" class="card">
+      <!-- Role selector section -->
+      <div id="role-selector" class="card">
         <div class="card-header">
-          <i class="fas fa-search-dollar"></i>
-          <h2>Lookup Wallet Balance</h2>
+          <i class="fas fa-user-tag"></i>
+          <h2>Select Your Role</h2>
         </div>
         <div class="card-content">
-          <div class="input-title">Enter Wallet Address</div>
+          <div class="role-options">
+            <label class="role-option">
+              <input type="radio" name="user-role" value="attendee" checked />
+              <span class="role-label">
+                <i class="fas fa-user"></i> Attendee
+                <span class="role-description">Checking my own ticket</span>
+              </span>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="user-role" value="doorman" />
+              <span class="role-label">
+                <i class="fas fa-clipboard-check"></i> Doorman
+                <span class="role-description">Verifying attendee tickets</span>
+              </span>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="user-role" value="venue" />
+              <span class="role-label">
+                <i class="fas fa-building"></i> Venue Manager
+                <span class="role-description"
+                  >Monitoring ticket distribution</span
+                >
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="check-balance" class="card">
+        <div class="card-header">
+          <i class="fas fa-chart-pie" id="lookup-icon"></i>
+          <h2 id="lookup-title">Check Ticket Distribution</h2>
+        </div>
+        <div class="card-content">
+          <div class="input-title" id="wallet-input-label">
+            Enter Wallet Address to Check
+          </div>
           <div class="input-group">
             <input type="text" id="wallet-address-input" placeholder="0x..." />
           </div>
 
+          <div
+            id="doorman-options"
+            style="display: none"
+            class="role-specific-options">
+            <div class="input-title">Ticket Verification</div>
+            <div class="verification-info">
+              <p>Verify if this wallet holds tickets for the event.</p>
+            </div>
+          </div>
+
           <div class="button-container">
             <button id="check-balance-btn" class="action-btn">
-              <i class="fas fa-search"></i> Check Balance
+              <i class="fas fa-search"></i>
+              <span id="check-button-text">Check Distribution</span>
             </button>
           </div>
 
@@ -102,6 +150,36 @@
                   <i class="fas fa-ticket-alt"></i> TTK Balance
                 </div>
                 <div class="balance-value" id="ttk-balance">0 TTK</div>
+              </div>
+
+              <div
+                id="ticket-validation"
+                class="balance-item"
+                style="display: none">
+                <div class="balance-title">
+                  <i class="fas fa-check-circle"></i> Ticket Status
+                </div>
+                <div class="balance-value" id="ticket-status">Not verified</div>
+              </div>
+
+              <div
+                id="distribution-stats"
+                class="balance-item"
+                style="display: none">
+                <div class="balance-title">
+                  <i class="fas fa-chart-pie"></i> Distribution Statistics
+                </div>
+                <div class="distribution-info">
+                  <div id="distribution-loading" style="display: none">
+                    Loading statistics...
+                  </div>
+                  <div id="distribution-data">
+                    <p>
+                      Wallet owns <span id="percentage-owned">0%</span> of total
+                      tickets
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
-/* Balance page styles */
+/* === "Check Balance" Page Styles === */
+
 #balance-desc {
   color: var(--bright);
   opacity: 0.9;
@@ -91,4 +92,215 @@
   font-family: "Roboto Mono", monospace;
 }
 
-/* Balance-specific styles */
+/* Role selector styles */
+.role-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: -1em;
+  margin-bottom: 1em;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  background-color: var(--card-bg);
+}
+
+.role-option:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--dpurple);
+}
+
+.role-option input[type="radio"] {
+  margin-right: 0.8rem;
+  accent-color: var(--bgreen);
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.role-option input[type="radio"]:checked + .role-label {
+  color: var(--bgreen);
+}
+
+.role-option:has(input[type="radio"]:checked) {
+  border: 1px solid var(--bgreen);
+  background-color: rgba(75, 255, 165, 0.1);
+}
+
+.role-option.selected {
+  border: 1px solid var(--bgreen) !important;
+  background-color: rgba(75, 255, 165, 0.1) !important;
+}
+
+.role-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--bright);
+  width: 100%;
+}
+
+.role-label i {
+  margin-right: 0.5rem;
+  width: 16px;
+  text-align: center;
+  color: var(--bgreen);
+}
+
+.role-description {
+  font-size: 0.8rem;
+  color: var(--lgrey);
+  margin-left: auto;
+}
+
+/* Role-specific option styles */
+.role-specific-options {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: rgba(17, 17, 23, 0.6);
+  border-radius: 4px;
+  border: 1px solid var(--dpurple);
+}
+
+.verification-info p,
+.distribution-controls p {
+  color: var(--bright);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.distribution-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.checkbox-group input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 0.2em;
+  margin-right: 0.5rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--dpurple);
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: var(--bgreen);
+  border-color: var(--bgreen);
+}
+
+.checkbox-group input[type="checkbox"]:checked::before {
+  content: "✓";
+  position: absolute;
+  color: var(--bg);
+  font-size: 1em;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-group label {
+  color: var(--bright);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Distribution stats styles */
+.distribution-info {
+  padding: 0.5rem 0;
+}
+
+#distribution-loading {
+  color: var(--lgrey);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+#distribution-data p {
+  margin: 0.3rem 0;
+  color: var(--bright);
+}
+
+#percentage-owned {
+  color: var(--bgreen);
+  font-weight: bold;
+}
+
+/* Ticket validation styles */
+#ticket-status {
+  font-weight: bold;
+}
+
+.ticket-valid {
+  color: var(--bgreen) !important;
+}
+
+.ticket-invalid {
+  color: var(--bred) !important;
+}
+
+/* Simple checkbox styling for venue role */
+.venue-simple-option {
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.venue-simple-option .checkbox-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+}
+
+.venue-simple-option .checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin-right: 8px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--bgreen);
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+}
+
+.venue-simple-option .checkbox-group input[type="checkbox"]:checked {
+  background-color: var(--bgreen);
+}
+
+.venue-simple-option .checkbox-group input[type="checkbox"]:checked::before {
+  content: "✓";
+  position: absolute;
+  color: var(--bg);
+  font-size: 0.8em;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.venue-simple-option .checkbox-group label {
+  color: var(--lgrey);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
