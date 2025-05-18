@@ -1,4 +1,4 @@
-# w3-dapp
+# Tikky – A Web3 DApp
 
 [![WEB3JS](https://img.shields.io/badge/web3.js-blue?logo=web3dotjs&logoColor=blue&labelColor=white)](https://web3js.readthedocs.io/en/v1.10.0)
 [![ETHEREUM](https://img.shields.io/badge/Ethereum-gray?logo=ethereum&logoColor=black&labelColor=white)](https://en.wikipedia.org/wiki/Ethereum)
